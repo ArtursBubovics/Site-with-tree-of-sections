@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../assets/css/main_settings/main.css">
     <link rel="stylesheet" href="../assets/css/authentication.css">
     <link rel="stylesheet" href="../assets/css/input_fields/input_fields.css">
-
+    <script src="../assets/js/authentication/redirect_to_another_page/registration/registration.js" defer></script>
+    <script src="../assets/js/authentication/authorization_forms/registration_form.js" defer></script>
 </head>
 
 <body class="authentication-block-container">
@@ -17,10 +18,10 @@
         <div class="authentication-block_inner-container">
             <div class="authentication-block_another-page">
                 <p class="authentication-block_additional-text">Do you already have an account?</p>
-                <button class="authentication-block_additional-text authentication-block_link">Login</button>
+                <button class="authentication-block_additional-text authentication-block_link" id="authentication-to-login-btn">Login</button>
             </div>
             <h3 class="main-header">Registration</h3>
-            <form class="authentication-block_form" action="login-action.php" method="post">
+            <form class="authentication-block_form" id="registrationForm" method="post">
                 <div class="authentication-block_form-container">
                     <div class="authentication-block_form-inputs_block">
                         <input class="input_field" type="text" name="username" placeholder="Name" required>
