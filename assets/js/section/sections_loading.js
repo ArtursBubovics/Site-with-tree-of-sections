@@ -77,9 +77,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function deleteSection(sectionId) {
-        // Логика удаления раздела
-        // Вы можете отправить запрос на сервер для удаления раздела по его ID
-        console.log('Удалить раздел с ID:', sectionId);
+        fetch('/Site_with_tree_of_sections/includes/sections/delete_section.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ sectionId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                loadSections();
+            } else {
+                console.error('Ошибка при удалении раздела:', data.error);
+            }
+        })
+        .catch(error => console.error('Ошибка:', error));
     }
 
     loadSections();
