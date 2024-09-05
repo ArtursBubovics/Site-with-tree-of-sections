@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 function getSections($conn, $userId, $parentId = null)
 {
 
-    $query = "SELECT id, title, description FROM sections WHERE user_id = ?";
+    $query = "SELECT id, title, description, parent_id FROM sections WHERE user_id = ?";
     $params = [$userId];
 
     if ($parentId === null) {
@@ -41,6 +41,7 @@ function getSections($conn, $userId, $parentId = null)
             'id' => $row['id'],
             'title' => $row['title'],
             'description' => $row['description'],
+            'parentId' => $row['parent_id'],
             'children' => getSections($conn, $userId, $row['id'])
         ];
         $sections[] = $section;
