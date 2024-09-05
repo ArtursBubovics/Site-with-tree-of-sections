@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         createSameLevelButton.textContent = 'Создать на этом уровне раздел';
         createSameLevelButton.classList.add('create-same-level');
         createSameLevelButton.addEventListener('click', function() {
-            createSection(section.parentId);
+            createSectionOnTheSameLavel(section.parentId);
         });
 
         const createSubLevelButton = document.createElement('button');
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error:', error));
     }
 
-    function createSection(parentId, title='New title', description='New description') {
+    function createSectionOnTheSameLavel(parentId, title='New title', description='New description') {
         console.log(JSON.stringify({ parentId, title, description }));
         fetch('/Site_with_tree_of_sections/includes/sections/create_a_section_at_the_same_level.php', {
             method: 'POST',
