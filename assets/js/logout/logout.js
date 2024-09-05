@@ -1,5 +1,5 @@
 document.getElementById('logout-button').addEventListener('click', function() {
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     
     xhr.open('GET', '/Site_with_tree_of_sections/includes/auth/logout.php', true);
     
