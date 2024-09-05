@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
             createSubsection(section.id);
         });
 
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Редактировать раздел';
+        editButton.classList.add('edit-section');
+        editButton.addEventListener('click', function() {
+            openEditModal(section.id, section.title, section.description);
+        });
+
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Удалить этот раздел';
         deleteButton.classList.add('delete-section');
@@ -31,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         buttonContainer.appendChild(createSameLevelButton);
         buttonContainer.appendChild(createSubLevelButton);
+        buttonContainer.appendChild(editButton);
         buttonContainer.appendChild(deleteButton);
 
         const title = document.createElement('div');
@@ -68,6 +76,42 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => console.error('Error:', error));
     }
+
+
+
+    function openEditModal(sectionId, currentTitle, currentDescription) {
+        const title = prompt("Введите новый заголовок:", currentTitle);
+    
+        if (title === null) return;
+    
+        const description = prompt("Введите новое описание:", currentDescription);
+    
+        if (description === null) {
+            updateSection(sectionId, title, currentDescription);
+        } else {
+            updateSection(sectionId, title, description);
+        }
+    }
+
+    function updateSection(sectionId, title, description) {
+        fetch('/Site_with_tree_of_sections/includes/sections/update_section.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ sectionId, title, description })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                loadSections(); // Обновляем список разделов после успешного обновления
+            } else {
+                console.error('Ошибка при обновлении раздела:', data.error);
+            }
+        })
+        .catch(error => console.error('Ошибка:', error));
+    }
+    
 
     function createSectionOnTheSameLavel(parentId, title='New title', description='New description') {
         console.log(JSON.stringify({ parentId, title, description }));
