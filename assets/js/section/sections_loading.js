@@ -64,15 +64,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function loadSections() {
         fetch('/Site_with_tree_of_sections/includes/sections/get_sections.php')
-            .then(response => response.text())
-            .then(text => {
-                try {
-                    const data = JSON.parse(text);
-                    sectionsList.innerHTML = '';
-                    data.forEach(section => sectionsList.appendChild(createListItem(section)));
-                } catch (error) {
-                    console.error('Failed to parse JSON:', error);
+            .then(response => {
+                const contentType = response.headers.get('Content-Type');
+                if (contentType && contentType.includes('application/json')) {
+                    return response.json();
+                } else {
+                    return response.text().then(text => {
+                        throw new Error(`Unexpected response type: ${text}`);
+                    });
                 }
+            })
+            .then(data => {
+                sectionsList.innerHTML = '';
+                data.forEach(section => sectionsList.appendChild(createListItem(section)));
             })
             .catch(error => console.error('Error:', error));
     }
@@ -101,7 +105,16 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify({ sectionId, title, description })
         })
-        .then(response => response.json())
+        .then(response => {
+            const contentType = response.headers.get('Content-Type');
+            if (contentType && contentType.includes('application/json')) {
+                return response.json();
+            } else {
+                return response.text().then(text => {
+                    throw new Error(`Unexpected response type: ${text}`);
+                });
+            }
+        })
         .then(data => {
             if (data.success) {
                 loadSections(); // Обновляем список разделов после успешного обновления
@@ -114,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     function createSectionOnTheSameLavel(parentId, title='New title', description='New description') {
-        console.log(JSON.stringify({ parentId, title, description }));
         fetch('/Site_with_tree_of_sections/includes/sections/create_a_section_at_the_same_level.php', {
             method: 'POST',
             headers: {
@@ -122,7 +134,16 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify({ parentId, title, description })
         })
-        .then(response => response.json())
+        .then(response => {
+            const contentType = response.headers.get('Content-Type');
+            if (contentType && contentType.includes('application/json')) {
+                return response.json();
+            } else {
+                return response.text().then(text => {
+                    throw new Error(`Unexpected response type: ${text}`);
+                });
+            }
+        })
         .then(data => {
             if (data.success) {
                 loadSections();
@@ -134,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function createSubsection(sectionId, title='New title', description='New description') {
-        console.log(JSON.stringify({ sectionId, title, description }));
         fetch('/Site_with_tree_of_sections/includes/sections/create_a_subsection.php', {
             method: 'POST',
             headers: {
@@ -142,7 +162,16 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify({ sectionId, title, description })
         })
-        .then(response => response.json())
+        .then(response => {
+            const contentType = response.headers.get('Content-Type');
+            if (contentType && contentType.includes('application/json')) {
+                return response.json();
+            } else {
+                return response.text().then(text => {
+                    throw new Error(`Unexpected response type: ${text}`);
+                });
+            }
+        })
         .then(data => {
             if (data.success) {
                 loadSections();
@@ -161,7 +190,16 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify({ sectionId })
         })
-        .then(response => response.json())
+        .then(response => {
+            const contentType = response.headers.get('Content-Type');
+            if (contentType && contentType.includes('application/json')) {
+                return response.json();
+            } else {
+                return response.text().then(text => {
+                    throw new Error(`Unexpected response type: ${text}`);
+                });
+            }
+        })
         .then(data => {
             if (data.success) {
                 loadSections();
