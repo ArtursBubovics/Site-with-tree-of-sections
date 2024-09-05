@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         createSubLevelButton.textContent = 'Создать подраздел';
         createSubLevelButton.classList.add('create-sub-level');
         createSubLevelButton.addEventListener('click', function() {
-            createSection(section.id);
+            createSubsection(section.id);
         });
 
         const deleteButton = document.createElement('button');
@@ -77,6 +77,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ parentId, title, description })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                loadSections();
+            } else {
+                console.error('Ошибка при создании раздела:', data.error);
+            }
+        })
+        .catch(error => console.error('Ошибка:', error));
+    }
+    
+    function createSubsection(sectionId, title='New title', description='New description') {
+        console.log(JSON.stringify({ sectionId, title, description }));
+        fetch('/Site_with_tree_of_sections/includes/sections/create_a_subsection.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ sectionId, title, description })
         })
         .then(response => response.json())
         .then(data => {
