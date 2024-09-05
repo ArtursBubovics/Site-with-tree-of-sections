@@ -4,6 +4,8 @@ session_start();
 
 require '../db.php';
 
+header('Content-Type: application/json'); 
+
 if (!isset($_SESSION['user_id'])) {
     http_response_code(403);
     echo json_encode(['error' => 'User not authenticated']);
@@ -18,22 +20,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sectionId = intval($data['sectionId']);
         $userId = $_SESSION['user_id'];
 
-        $stmt = $conn->prepare('DELETE FROM sections WHERE id = ? AND user_id = ?');
-        if ($stmt === false) {
-            echo json_encode(['error' => 'Failed to prepare SQL statement']);
-            exit();
+        function deleteSectionAndChildren($conn, $sectionId, $userId) {
+            $stmt = $conn->prepare('SELECT id FROM sections WHERE parent_id = ? AND user_id = ?');
+            if ($stmt === false) {
+                echo json_encode(['error' => 'Failed to prepare SQL statement']);
+                exit();
+            }
+            $stmt->bind_param('ii', $sectionId, $userId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            while ($row = $result->fetch_assoc()) {
+                deleteSectionAndChildren($conn, $row['id'], $userId);
+            }
+
+            $stmt->close();
+
+            $stmt = $conn->prepare('DELETE FROM sections WHERE id = ? AND user_id = ?');
+            if ($stmt === false) {
+                echo json_encode(['error' => 'Failed to prepare SQL statement']);
+                exit();
+            }
+
+            $stmt->bind_param('ii', $sectionId, $userId);
+            $stmt->execute();
+            $stmt->close();
         }
 
-        $stmt->bind_param('ii', $sectionId, $userId);
-        $stmt->execute();
+        deleteSectionAndChildren($conn, $sectionId, $userId);
 
-        if ($stmt->affected_rows > 0) {
-            echo json_encode(['success' => true]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Section not found']);
-        }
-
-        $stmt->close();
+        echo json_encode(['success' => true]);
     } else {
         echo json_encode(['error' => 'Invalid input']);
     }
