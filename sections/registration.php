@@ -24,9 +24,9 @@
             <form class="authentication-block_form" id="registrationForm" method="post">
                 <div class="authentication-block_form-container">
                     <div class="authentication-block_form-inputs_block">
-                        <input class="input_field" type="text" name="username" placeholder="Name" required>
-                        <input class="input_field" type="password" name="password" placeholder="Password" required>
-                        <input class="input_field" type="password" name="confirm_password" placeholder="Confirm Password" required>
+                        <input class="input_field" type="text" name="username" placeholder="Name" minlength="6" required>
+                        <input class="input_field" type="password" name="password" placeholder="Password" minlength="6" required>
+                        <input class="input_field" type="password" name="confirm_password" placeholder="Confirm Password" minlength="6" required>
                     </div>
                     <div class="authentication-block_form-button-block">
                         <button class="authentication-block_form-button" type="submit">Register</button>

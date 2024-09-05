@@ -1,15 +1,28 @@
 document.getElementById('registrationForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    var formData = new FormData(this);
+    let formData = new FormData(this);
 
-    var xhr = new XMLHttpRequest();
+    let password = formData.get('password');
+    let confirmPassword = formData.get('confirm_password');
+
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+    }
+
+    let xhr = new XMLHttpRequest();
 
     xhr.open('POST', '/Site_with_tree_of_sections/includes/auth/user_registration.php', true);
     xhr.onload = function () {
         if (xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
-            if (response.success) {
+            let response = JSON.parse(xhr.responseText);
+            if (response.error === 'Username already exists') {
+                alert('Username already exists. Please choose a different one.');
+            } else if (response.error === 'Incorrect password') {
+                alert('Incorrect password. Please try again.');
+            } else if (response.success) {
                 window.location.href = '/Site_with_tree_of_sections/sections/sections.php';
             } else {
                 console.error('Registration error:', response.error);
