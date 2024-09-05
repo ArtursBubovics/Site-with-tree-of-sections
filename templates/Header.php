@@ -11,7 +11,7 @@
 <body>
     <header class="site-header">
         <p>My Website</p>
-        <button id="logoutButton">
+        <button id="logout-button">
             <p>Log out</p>
         </button>
     </header>
