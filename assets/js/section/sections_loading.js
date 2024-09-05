@@ -69,11 +69,24 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error:', error));
     }
 
-    function createSection(parentId) {
-        // Логика создания нового раздела
-        // Здесь вы можете открыть модальное окно или форму для ввода данных
-        // Затем отправить запрос на сервер для создания раздела
-        console.log('Создать новый раздел с родительским ID:', parentId);
+    function createSection(parentId, title='New title', description='New description') {
+        console.log(JSON.stringify({ parentId, title, description }));
+        fetch('/Site_with_tree_of_sections/includes/sections/create_a_section_at_the_same_level.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ parentId, title, description })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                loadSections();
+            } else {
+                console.error('Ошибка при создании раздела:', data.error);
+            }
+        })
+        .catch(error => console.error('Ошибка:', error));
     }
 
     function deleteSection(sectionId) {
