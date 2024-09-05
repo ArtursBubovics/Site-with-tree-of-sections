@@ -14,7 +14,7 @@ require '../templates/Header.php'
     <script src="../assets/js/section/sections_loading.js" defer></script>
 </head>
 
-<body>
+<body id="sections-body">
     <div id="sections"></div>
 </body>
 
