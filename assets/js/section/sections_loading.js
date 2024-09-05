@@ -81,7 +81,18 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error:', error));
     }
 
-
+    function checkSections() {
+        fetch('/Site_with_tree_of_sections/includes/sections/check_sections.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.hasSections) {
+                    loadSections();
+                } else {
+                    createSectionOnTheSameLavel(null);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
 
     function openEditModal(sectionId, currentTitle, currentDescription) {
         const title = prompt("Введите новый заголовок:", currentTitle);
@@ -117,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             if (data.success) {
-                loadSections(); // Обновляем список разделов после успешного обновления
+                loadSections();
             } else {
                 console.error('Ошибка при обновлении раздела:', data.error);
             }
@@ -202,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             if (data.success) {
-                loadSections();
+                checkSections();
             } else {
                 console.error('Ошибка при удалении раздела:', data.error);
             }
@@ -210,5 +221,5 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Ошибка:', error));
     }
 
-    loadSections();
+    checkSections();
 })
