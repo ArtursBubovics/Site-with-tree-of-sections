@@ -9,28 +9,28 @@ document.addEventListener('DOMContentLoaded', function() {
         buttonContainer.classList.add('button-container');
 
         const createSameLevelButton = document.createElement('button');
-        createSameLevelButton.textContent = 'Создать на этом уровне раздел';
+        createSameLevelButton.textContent = 'Create a section at this level';
         createSameLevelButton.classList.add('create-same-level');
         createSameLevelButton.addEventListener('click', function() {
             createSectionOnTheSameLavel(section.parentId);
         });
 
         const createSubLevelButton = document.createElement('button');
-        createSubLevelButton.textContent = 'Создать подраздел';
+        createSubLevelButton.textContent = 'Create a subsection';
         createSubLevelButton.classList.add('create-sub-level');
         createSubLevelButton.addEventListener('click', function() {
             createSubsection(section.id);
         });
 
         const editButton = document.createElement('button');
-        editButton.textContent = 'Редактировать раздел';
+        editButton.textContent = 'Edit section';
         editButton.classList.add('edit-section');
         editButton.addEventListener('click', function() {
             openEditModal(section.id, section.title, section.description);
         });
 
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Удалить этот раздел';
+        deleteButton.textContent = 'Delete this section';
         deleteButton.classList.add('delete-section');
         deleteButton.addEventListener('click', function() {
             deleteSection(section.id);
@@ -95,11 +95,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function openEditModal(sectionId, currentTitle, currentDescription) {
-        const title = prompt("Введите новый заголовок:", currentTitle);
+        const title = prompt("Enter a new title:", currentTitle);
     
         if (title === null) return;
     
-        const description = prompt("Введите новое описание:", currentDescription);
+        const description = prompt("Enter a new description:", currentDescription);
     
         if (description === null) {
             updateSection(sectionId, title, currentDescription);
@@ -130,10 +130,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.success) {
                 loadSections();
             } else {
-                console.error('Ошибка при обновлении раздела:', data.error);
+                console.error('Error updating section:', data.error);
             }
         })
-        .catch(error => console.error('Ошибка:', error));
+        .catch(error => console.error('Error:', error));
     }
     
 
@@ -159,10 +159,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.success) {
                 loadSections();
             } else {
-                console.error('Ошибка при создании раздела:', data.error);
+                console.error('Error creating partition:', data.error);
             }
         })
-        .catch(error => console.error('Ошибка:', error));
+        .catch(error => console.error('Error:', error));
     }
     
     function createSubsection(sectionId, title='New title', description='New description') {
@@ -187,10 +187,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.success) {
                 loadSections();
             } else {
-                console.error('Ошибка при создании раздела:', data.error);
+                console.error('Error creating partition:', data.error);
             }
         })
-        .catch(error => console.error('Ошибка:', error));
+        .catch(error => console.error('Error:', error));
     }
 
     function deleteSection(sectionId) {
@@ -215,10 +215,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.success) {
                 checkSections();
             } else {
-                console.error('Ошибка при удалении раздела:', data.error);
+                console.error('Error deleting section:', data.error);
             }
         })
-        .catch(error => console.error('Ошибка:', error));
+        .catch(error => console.error('Error:', error));
     }
 
     checkSections();
