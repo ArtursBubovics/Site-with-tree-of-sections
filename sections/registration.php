@@ -14,7 +14,7 @@
 </head>
 
 <body class="authentication-block-registration-container">
-    <div class="authentication-block-registration registration-part">
+    <div class="authentication-block-registration">
         <div class="authentication-block-registration_inner-container">
             <div class="authentication-block-registration_another-page">
                 <p class="authentication-block-registration_additional-text">Do you already have an account?</p>
@@ -24,9 +24,9 @@
             <form class="authentication-block-registration_form" id="registrationForm" method="post">
                 <div class="authentication-block-registration_form-container">
                     <div class="authentication-block-registration_form-inputs_block">
-                        <input class="input_field" type="text" name="username" placeholder="Name" minlength="6" required>
-                        <input class="input_field" type="password" name="password" placeholder="Password" minlength="6" required>
-                        <input class="input_field" type="password" name="confirm_password" placeholder="Confirm Password" minlength="6" required>
+                        <input class="input_field registration_field" type="text" name="username" placeholder="Name" minlength="6" required>
+                        <input class="input_field registration_field" type="password" name="password" placeholder="Password" minlength="6" required>
+                        <input class="input_field registration_field" type="password" name="confirm_password" placeholder="Confirm Password" minlength="6" required>
                     </div>
                     <div class="authentication-block-registration_form-button-block">
                         <button class="authentication-block-registration_form-button" type="submit">Register</button>

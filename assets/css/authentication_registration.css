@@ -5,15 +5,10 @@
 }
 
 .authentication-block-registration {
-    width: 28vw;
-    height: 47vh;
+    min-width: 28vw;
+    min-height: 47vh;
     background-color: rgb(233, 233, 233);
     border-radius: 3%;
-}
-
-.registration-part {
-    width: 28vw;
-    height: 47vh;
 }
 
 .authentication-block-registration_inner-container {
@@ -71,19 +66,26 @@
     text-decoration: underline;
 }
 
-@media (max-width: 700px) {
+/* @media (max-width: 1500px) {
+    .authentication-block-registration {
+        min-width: 25vw;
+        min-height: 42vh;
+    }
+} */
+
+@media (max-width: 850px) {
     .authentication-block-registration {
         min-width: 20vw;
-        min-height: 32vh;
+        min-height: 37vh;
     }
 
     .authentication-block-registration_inner-container {
-        padding: 25px 45px;
+        padding: 28px 45px;
         height: 100%;
     }
 
     .main-header {
-        font-size: 2em;
+        font-size: 1.7em;
     }
 
     .authentication-block-registration_form-button {
@@ -96,10 +98,16 @@
     }
 }
 
+@media (max-width: 760px) {
+    .authentication-block-registration-container {
+        padding: 0 30px
+    }
+}
+
 @media (max-width: 600px) {
     .authentication-block-registration {
         min-width: 10vw;
-        min-height: 17vh;
+        min-height: 34vh;
     }
 
     .authentication-block-registration_inner-container {
@@ -118,11 +126,5 @@
 
     .authentication-block-registration_additional-text {
         font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 500px) {
-    .authentication-block-registration-container {
-        padding: 0 30px
     }
 }
