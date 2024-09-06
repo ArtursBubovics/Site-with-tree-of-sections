@@ -4,7 +4,7 @@ session_start();
 require '../db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    http_response_code(403); // Forbidden
+    http_response_code(403);
     echo json_encode(['error' => 'User not authenticated']);
     exit();
 }
