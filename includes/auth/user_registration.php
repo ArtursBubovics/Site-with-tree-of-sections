@@ -1,5 +1,9 @@
 <?php
+session_start();
+
 require '../db.php';
+
+header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -24,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ss", $username, $hashedPassword);
 
     if ($stmt->execute()) {
-        $_SESSION['user_id'] = $user_id;
+        $_SESSION['user_id'] = $stmt->insert_id;;
         echo json_encode(['success' => true]);
     } else {
         echo json_encode(['success' => false, 'error' => $stmt->error]);
