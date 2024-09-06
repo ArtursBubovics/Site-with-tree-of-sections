@@ -1,12 +1,6 @@
-#sections-body{
-    display: flex;
-    flex-direction: column;
-}
-
 #sections{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr;
     padding: 50px 80px;
     list-style-type: none;
     overflow-y: auto;
