@@ -1,10 +1,10 @@
-.authentication-block-container {
+.authentication-block-login-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.authentication-block {
+.authentication-block-login {
     min-width: 28vw;
     min-height: 39vh;
     background-color: rgb(233, 233, 233);
@@ -16,18 +16,18 @@
     height: 47vh;
 }
 
-.authentication-block_inner-container {
+.authentication-block-login_inner-container {
     padding: 45px 70px;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.authentication-block_form {
+.authentication-block-login_form {
     flex: 1;
 }
 
-.authentication-block_form-container {
+.authentication-block-login_form-container {
     padding-top: 10px;
 }
 
@@ -35,11 +35,11 @@
     font-size: 2.3em;
 }
 
-.authentication-block_form-inputs_block {
+.authentication-block-login_form-inputs_block {
     margin-bottom: 20px
 }
 
-.authentication-block_form-button-block {
+.authentication-block-login_form-button-block {
     width: 100%;
     display: flex;
     align-items: center;
@@ -47,7 +47,7 @@
     padding-left: 15px;
 }
 
-.authentication-block_form-button {
+.authentication-block-login_form-button {
     padding: 7px 60px;
     background-color: rgb(221, 221, 221);
     border-radius: 5%;
@@ -55,29 +55,29 @@
     width: auto;
 }
 
-.authentication-block_another-page {
+.authentication-block-login_another-page {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 2px;
 }
 
-.authentication-block_additional-text {
+.authentication-block-login_additional-text {
     font-size: 1rem;
 }
 
-.authentication-block_link {
+.authentication-block-login_link {
     margin-left: 0.2rem;
     padding-bottom: 0.1rem;
     text-decoration: underline;
 }
 
 @media (max-width: 700px) {
-    .authentication-block {
+    .authentication-block-login {
         min-width: 20vw;
         min-height: 32vh;
     }
 
-    .authentication-block_inner-container {
+    .authentication-block-login_inner-container {
         padding: 25px 45px;
         height: 100%;
     }
@@ -86,23 +86,23 @@
         font-size: 2em;
     }
 
-    .authentication-block_form-button {
+    .authentication-block-login_form-button {
         padding: 6px 40px;
         font-size: 12px;
     }
 
-    .authentication-block_additional-text {
+    .authentication-block-login_additional-text {
         font-size: 0.9rem;
     }
 }
 
 @media (max-width: 600px) {
-    .authentication-block {
+    .authentication-block-login {
         min-width: 10vw;
         min-height: 17vh;
     }
 
-    .authentication-block_inner-container {
+    .authentication-block-login_inner-container {
         padding: 25px 35px;
         height: 100%;
     }
@@ -111,12 +111,18 @@
         font-size: 1.5em;
     }
 
-    .authentication-block_form-button {
+    .authentication-block-login_form-button {
         padding: 4px 40px;
         font-size: 11px;
     }
 
-    .authentication-block_additional-text {
+    .authentication-block-login_additional-text {
         font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .authentication-block-login-container {
+        padding: 0 30px
     }
 }
