@@ -14,11 +14,14 @@
     margin-bottom: 10px;
     padding: 10px;
     min-width: 950px;
+    border-radius: 5px;
 }
 
 .section-description {
     color: #555;
     font-size: 0.9em;
+    margin-bottom: 10px;
+    font-style: italic;
 }
 
 .section-item ul {
@@ -48,18 +51,6 @@
 .section-title {
     font-weight: bold;
     margin-top: 10px;
-}
-
-.section-description {
-    margin-bottom: 10px;
-    font-style: italic;
-}
-
-.section-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
 }
 
 

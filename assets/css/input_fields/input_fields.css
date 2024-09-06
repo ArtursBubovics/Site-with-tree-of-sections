@@ -4,19 +4,20 @@
     border: 1px solid gray;
     padding-left: 18px;
     margin-bottom: 22px;
+    outline: none;
 }
 
 .input_field:last-of-type {
     margin-bottom: 0; 
 }
 
-.input_field{
-    outline: none;
-}
-
 .input_field::placeholder{
     font-size: 18px; 
 }
+
+
+
+/*Adaptation of registration fields*/
 
 @media (max-width: 850px) {
     .registration_field{
@@ -27,6 +28,9 @@
         font-size: 15px; 
     }
 }
+
+
+/* Adapting login fields */
 
 @media (max-width: 700px) {
     .login_field{
