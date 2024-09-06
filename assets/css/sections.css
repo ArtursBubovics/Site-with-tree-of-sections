@@ -1,6 +1,7 @@
 #sections{
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     padding: 50px 80px;
     list-style-type: none;
     overflow-y: auto;
