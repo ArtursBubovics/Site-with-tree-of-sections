@@ -1,70 +1,122 @@
-.authentication-block-container{
+.authentication-block-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.authentication-block{
-    width: 28vw;
-    height: 42vh;
-    background-color:rgb(233, 233, 233);
+.authentication-block {
+    min-width: 28vw;
+    min-height: 39vh;
+    background-color: rgb(233, 233, 233);
     border-radius: 3%;
 }
 
-.registration-part{
+.registration-part {
     width: 28vw;
-    height: 52vh;
+    height: 47vh;
 }
 
-.authentication-block_inner-container{
+.authentication-block_inner-container {
     padding: 45px 70px;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.authentication-block_form{
+.authentication-block_form {
     flex: 1;
 }
 
-.authentication-block_form-container{
+.authentication-block_form-container {
     padding-top: 10px;
 }
 
-.main-header{
-    font-size: 2.6em;
+.main-header {
+    font-size: 2.3em;
 }
 
-.authentication-block_form-inputs_block{
+.authentication-block_form-inputs_block {
     margin-bottom: 20px
 }
 
-.authentication-block_form-button-block{
-    width: 50%;
+.authentication-block_form-button-block {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: 15px;
 }
 
-.authentication-block_form-button{
-    padding: 10px 70px;
-    background-color:rgb(221, 221, 221);
+.authentication-block_form-button {
+    padding: 7px 60px;
+    background-color: rgb(221, 221, 221);
     border-radius: 5%;
-    font-size: 17px;
+    font-size: 16px;
+    width: auto;
 }
 
-.authentication-block_another-page{
+.authentication-block_another-page {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 2px;
 }
 
-.authentication-block_additional-text{
+.authentication-block_additional-text {
     font-size: 1rem;
 }
 
-.authentication-block_link{
+.authentication-block_link {
     margin-left: 0.2rem;
     padding-bottom: 0.1rem;
     text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .authentication-block {
+        min-width: 20vw;
+        min-height: 32vh;
+    }
+
+    .authentication-block_inner-container {
+        padding: 25px 45px;
+        height: 100%;
+    }
+
+    .main-header {
+        font-size: 2em;
+    }
+
+    .authentication-block_form-button {
+        padding: 6px 40px;
+        font-size: 12px;
+    }
+
+    .authentication-block_additional-text {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .authentication-block {
+        min-width: 10vw;
+        min-height: 17vh;
+    }
+
+    .authentication-block_inner-container {
+        padding: 25px 35px;
+        height: 100%;
+    }
+
+    .main-header {
+        font-size: 1.5em;
+    }
+
+    .authentication-block_form-button {
+        padding: 4px 40px;
+        font-size: 11px;
+    }
+
+    .authentication-block_additional-text {
+        font-size: 0.8rem;
+    }
 }
